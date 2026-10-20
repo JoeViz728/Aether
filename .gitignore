@@ -1,0 +1,22 @@
+node_modules/
+dist/
+build/
+data/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+
+# Agent / session harness artifacts (not project source)
+terminals/
+mcps/
+*.tmp
+*.bak
+
+# Local data dumps / export samples (not source)
+*.zip
+_tmp-*/
+_tmp-xai-export/

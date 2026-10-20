@@ -1,0 +1,18 @@
+{
+  "name": "aether",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-hosted Grok-like AI experience powered by xAI",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @aether/shared --filter @aether/server --filter @aether/web run dev",
+    "build": "pnpm --filter @aether/shared --filter @aether/server --filter @aether/web run build",
+    "start": "pnpm --filter @aether/server start",
+    "desktop:dev": "pnpm --filter @aether/desktop dev",
+    "desktop:build": "pnpm build && pnpm --filter @aether/desktop exec tauri build",
+    "typecheck": "pnpm -r run typecheck"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

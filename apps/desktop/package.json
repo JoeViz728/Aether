@@ -1,0 +1,13 @@
+{
+  "name": "@aether/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo Desktop dev requires Rust + Tauri. Use: pnpm desktop:dev",
+    "build": "echo 'Run pnpm desktop:build from project root'",
+    "typecheck": "echo 'Desktop typecheck via Tauri'"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.5.0"
+  }
+}

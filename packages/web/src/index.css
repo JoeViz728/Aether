@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-aether-bg: #0a0a0a;
+  --color-aether-surface: #141414;
+  --color-aether-surface-2: #1c1c1c;
+  --color-aether-border: #2a2a2a;
+  --color-aether-text: #f5f5f5;
+  --color-aether-muted: #888888;
+  --color-aether-accent: #ffffff;
+  --color-aether-thinking: #3b3b3b;
+  --color-aether-tool: #1a2a1a;
+  --color-aether-overlay: rgb(0 0 0 / 0.7);
+  --color-aether-tool-active: #4ade80;
+  --color-aether-table-border: #3d3d3d;
+  --color-aether-table-stripe: #1a1a1a;
+}
+
+[data-theme="light"] {
+  --color-aether-bg: #fafafa;
+  --color-aether-surface: #ffffff;
+  --color-aether-surface-2: #f0f0f0;
+  --color-aether-border: #e5e5e5;
+  --color-aether-table-border: #d4d4d4;
+  --color-aether-table-stripe: #f7f7f7;
+  --color-aether-text: #171717;
+  --color-aether-muted: #737373;
+  --color-aether-accent: #171717;
+  --color-aether-thinking: #f5f5f5;
+  --color-aether-tool: #ecfdf5;
+  --color-aether-overlay: rgb(0 0 0 / 0.45);
+  --color-aether-tool-active: #059669;
+}
+
+[data-theme="dark"] {
+  --color-aether-bg: #0a0a0a;
+  --color-aether-surface: #141414;
+  --color-aether-surface-2: #1c1c1c;
+  --color-aether-border: #2a2a2a;
+  --color-aether-table-border: #3d3d3d;
+  --color-aether-table-stripe: #1a1a1a;
+  --color-aether-text: #f5f5f5;
+  --color-aether-muted: #888888;
+  --color-aether-accent: #ffffff;
+  --color-aether-thinking: #3b3b3b;
+  --color-aether-tool: #1a2a1a;
+  --color-aether-overlay: rgb(0 0 0 / 0.7);
+  --color-aether-tool-active: #4ade80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-aether-bg);
+  color: var(--color-aether-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-aether-border);
+  border-radius: 3px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.prose-aether {
+  line-height: 1.7;
+}
+
+.prose-aether p {
+  margin: 0.75em 0;
+}
+
+.prose-aether pre {
+  background: var(--color-aether-surface-2);
+  border: 1px solid var(--color-aether-border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+.prose-aether code {
+  background: var(--color-aether-surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+.prose-aether pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tables & grids */
+.prose-aether .prose-table-wrap {
+  margin: 1em 0;
+  overflow-x: auto;
+  border: 1px solid var(--color-aether-table-border, var(--color-aether-border));
+  border-radius: 10px;
+  background: var(--color-aether-surface);
+}
+
+.prose-aether .prose-table-wrap table {
+  width: 100%;
+  /* Allow cell content to wrap so tables/grids can fit within the container width
+     instead of forcing horizontal scroll for every wide cell. */
+  table-layout: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.prose-aether thead {
+  background: var(--color-aether-surface-2);
+}
+
+.prose-aether th,
+.prose-aether td {
+  border-right: 1px solid var(--color-aether-table-border, var(--color-aether-border));
+  border-bottom: 1px solid var(--color-aether-table-border, var(--color-aether-border));
+  padding: 0.875rem 1.5rem;
+  text-align: left;
+  vertical-align: top;
+  /* Allow wrapping so grids/tables fit laterally without forcing single-line cells */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.prose-aether tr > :last-child {
+  border-right: none;
+}
+
+.prose-aether tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+.prose-aether th {
+  font-weight: 600;
+  color: var(--color-aether-text);
+}
+
+.prose-aether td {
+  color: var(--color-aether-text);
+}
+
+.prose-aether thead th {
+  border-bottom: 2px solid var(--color-aether-table-border, var(--color-aether-border));
+}
+
+.prose-aether tbody tr:nth-child(even) {
+  background: var(--color-aether-table-stripe, var(--color-aether-surface-2));
+}
+
+.prose-aether tbody tr:hover {
+  background: color-mix(in srgb, var(--color-aether-surface-2) 85%, var(--color-aether-muted));
+}
+
+.prose-aether th > :first-child,
+.prose-aether td > :first-child {
+  margin-top: 0;
+}
+
+.prose-aether th > :last-child,
+.prose-aether td > :last-child {
+  margin-bottom: 0;
+}
+
+.prose-aether th p,
+.prose-aether td p {
+  margin: 0;
+}
+
+.prose-aether th ul,
+.prose-aether th ol,
+.prose-aether td ul,
+.prose-aether td ol {
+  margin: 0.35em 0;
+}
+
+/* Lists & blocks — lateral breathing room */
+.prose-aether ul,
+.prose-aether ol {
+  margin: 0.75em 0;
+  padding-left: 1.75rem;
+  list-style-position: outside;
+}
+
+.prose-aether ul {
+  list-style-type: disc;
+}
+
+.prose-aether ul.contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose-aether ul ul {
+  list-style-type: circle;
+}
+
+.prose-aether ul ul ul {
+  list-style-type: square;
+}
+
+.prose-aether ol {
+  list-style-type: decimal;
+}
+
+.prose-aether ol ol {
+  list-style-type: lower-alpha;
+}
+
+.prose-aether ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.prose-aether li {
+  display: list-item;
+  margin: 0.35em 0;
+  padding-left: 0.25rem;
+}
+
+.prose-aether li.task-list-item {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose-aether li > ul,
+.prose-aether li > ol {
+  margin: 0.35em 0;
+}
+
+.prose-aether blockquote {
+  margin: 1em 0;
+  padding: 0.75rem 1.125rem;
+  border-left: 3px solid var(--color-aether-border);
+  background: var(--color-aether-surface-2);
+  border-radius: 0 8px 8px 0;
+  color: var(--color-aether-muted);
+}
+
+.prose-aether hr {
+  margin: 1.5em 0;
+  border: none;
+  border-top: 1px solid var(--color-aether-border);
+}
+
+.prose-aether h1,
+.prose-aether h2,
+.prose-aether h3,
+.prose-aether h4 {
+  margin: 1.25em 0 0.5em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prose-aether h1 { font-size: 1.5rem; }
+.prose-aether h2 { font-size: 1.25rem; }
+.prose-aether h3 { font-size: 1.125rem; }
+
+.prose-aether a {
+  color: var(--color-aether-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-aether img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0.75em 0;
+}
